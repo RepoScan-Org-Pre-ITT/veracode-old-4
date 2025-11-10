@@ -41,6 +41,12 @@ jobs:
         run: |
           git config --global user.name 'veracode'
           git config --global user.email 'cli@veracode.com'
-          git add -A
-          git commit -am "New CLI Version"
-          git push --verbose
+          # Check if there are any changes
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Changes detected — committing and pushing latest CLI."
+            git add -A
+            git commit -m "New CLI Version"
+            git push --verbose
+          else
+            echo "No changes to commit."
+          fi
