@@ -126,12 +126,14 @@ jobs:
       - name: Install Veracode CLI
         shell: pwsh
         run: |
-          $cliFile = Get-ChildItem -Name *.ps1 | Select-Object -First 1
-          Set-ExecutionPolicy Bypass -Scope Process -Force
-          $ProgressPreference = "silentlyContinue"
-          ./veracode-helper/helper/cli/veracode-cli_2.43.0_windows.ps1
-          $VERACODE_CLI = Get-Command veracode | Select-Object -ExpandProperty Definition
-          echo "VERACODE_CLI=$VERACODE_CLI" | Out-File -FilePath $env:GITHUB_ENV -Append
+          # $cliFile = Get-ChildItem -Name *.ps1 | Select-Object -First 1
+          # Set-ExecutionPolicy Bypass -Scope Process -Force
+          # $ProgressPreference = "silentlyContinue"
+          # ./veracode-helper/helper/cli/veracode-cli_2.43.0_windows.ps1
+          # $VERACODE_CLI = Get-Command veracode | Select-Object -ExpandProperty Definition
+          # echo "VERACODE_CLI=$VERACODE_CLI" | Out-File -FilePath $env:GITHUB_ENV -Append
+          copy veracode-helper/helper/cli/veracode-cli_2.43.0_windows.ps1 veracode-helper/helper/cli/veracode
+          veracode-helper/helper/cli/veracode package --source source-code --output veracode-artifacts --trust
 
       - name: Ensure MSBuild available
         shell: pwsh
