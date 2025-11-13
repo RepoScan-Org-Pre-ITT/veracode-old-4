@@ -129,13 +129,11 @@ jobs:
       - name: Install Veracode CLI
         shell: pwsh
         run: |
-          $cliFile = Get-ChildItem -Name *.ps1 | Select-Object -First 1
-          Write-Host "cliFile name $cliFile"
+          $cliFile = Get-ChildItem -Path "./veracode-helper/helper/cli" -Filter *.ps1 | Select-Object -First 1
+          Write-Host "Found CLI install script: $cliFile"
           Set-ExecutionPolicy Bypass -Scope Process -Force
           $ProgressPreference = "silentlyContinue"
-          $cliPath = Join-Path "veracode-helper/helper/cli" $cliFile
-          Write-Host "Executing $cliPath"
-          & $cliPath
+          & $cliFile.FullName
           $VERACODE_CLI = Get-Command veracode | Select-Object -ExpandProperty Definition
           echo "VERACODE_CLI=$VERACODE_CLI" | Out-File -FilePath $env:GITHUB_ENV -Append
 
