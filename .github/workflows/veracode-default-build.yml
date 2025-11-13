@@ -29,6 +29,9 @@ on:
       bundle_version:
         required: true
         type: string
+      default_runs_on:
+        required: true
+        type: string
 
 jobs:
   build-ubuntu:
