@@ -40,6 +40,7 @@ jobs:
         with:
           path: 'veracode-helper'
       - name: Find yarn JS apps using workspaces
+        if: contains(inputs.build_runs_on, 'ubuntu')
         run: |
           if [ -f "package.json" ] && [ -f "pnpm-lock.yaml" ] && [ -f "pnpm-workspace.yaml" ]; then
             echo "- The file package.json, pnpm-lock.yml and pnpm-workspace.yaml exist. This looks like a PNPM workspace project."
