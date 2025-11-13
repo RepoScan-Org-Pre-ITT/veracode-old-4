@@ -130,6 +130,7 @@ jobs:
         shell: pwsh
         run: |
           $cliFile = Get-ChildItem -Name *.ps1 | Select-Object -First 1
+          Write-Host "cliFile name $cliFile"
           Set-ExecutionPolicy Bypass -Scope Process -Force
           $ProgressPreference = "silentlyContinue"
           $cliPath = Join-Path "veracode-helper/helper/cli" $cliFile
