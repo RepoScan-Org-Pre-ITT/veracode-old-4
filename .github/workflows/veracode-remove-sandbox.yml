@@ -17,6 +17,7 @@ jobs:
     steps:
     - name: Create metadata
       id: create_metadata_json
+      shell: bash
       run: |
         echo '{
           "check_run_type": "${{ github.event.client_payload.event_type }}",
@@ -24,6 +25,7 @@ jobs:
           "check_run_id": "",
           "sha": "${{ github.event.client_payload.sha }}"
         }' > workflow-metadata.json
+
     - name: Save metadata
       uses: actions/upload-artifact@v4
       with:
