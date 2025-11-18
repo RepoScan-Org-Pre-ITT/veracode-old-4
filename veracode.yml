@@ -11,7 +11,7 @@ veracode_static_scan:
       - synchronize
     target_branch:
       - default_branch
-  analysis_on_platform: true
+  analysis_on_platform: false
   break_build_policy_findings: true
   break_build_invalid_policy: true
   break_build_on_error: true
@@ -28,7 +28,7 @@ veracode_static_scan:
   create_work_items: true
 veracode_sca_scan:
   push:
-    trigger: false
+    trigger: true
     branches_to_run:
       - '*'
     branches_to_exclude: null
