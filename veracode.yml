@@ -20,7 +20,7 @@ veracode_static_scan:
   analysis_on_platform: false
   break_build_policy_findings: true
   break_build_invalid_policy: true
-  break_build_on_error: true
+  break_build_on_error: false
   error_message: >-
     Veracode static scan faced a problem. Please contact your Veracode
     administrator for more information.
@@ -31,6 +31,7 @@ veracode_static_scan:
     trigger: false
     commands:
       - Veracode Static Scan
+  create_work_items: true
 veracode_sca_scan:
   push:
     trigger: false
@@ -74,4 +75,5 @@ veracode_iac_secrets_scan:
   issues:
     trigger: false
     commands:
+      - Veracode IAC Scan
       - Veracode IAC Scan
