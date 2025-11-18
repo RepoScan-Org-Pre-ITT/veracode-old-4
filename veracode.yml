@@ -1,5 +1,5 @@
 default:
-  runs_on: windows-2022
+  runs_on: windows-latest
 actions:
   veracode_static_scan:
     build:
