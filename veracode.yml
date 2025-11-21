@@ -1,9 +1,9 @@
 default:
-  runs_on: windows-2022
+  runs_on: 
 actions:
   veracode_static_scan:
     build:
-      runs_on: windows-latest
+      runs_on: 
 veracode_static_scan:
   push:
     trigger: true
